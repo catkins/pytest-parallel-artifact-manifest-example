@@ -19,6 +19,7 @@ def pipeline_json(number_of_jobs):
                 "command": "uv run run_chunk.py $$BUILDKITE_PARALLEL_JOB",
                 "image": "astral/uv:python3.14-bookworm",
                 "parallelism": number_of_jobs,
+                "retry": {"automatic": [{"limit": 1}]},
             }
         ]
     }
