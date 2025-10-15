@@ -1,5 +1,6 @@
 collect.json
-
+tests-chunk-*.json
 .report.json
+tests.json
 
 __pycache__/*
