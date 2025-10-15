@@ -1,6 +1,7 @@
 import os
 import subprocess
 import json
+import sys
 
 chunk_id = os.environ["BUILDKITE_PARALLEL_JOB"]
 artifact_name = f"tests-chunk-{chunk_id}.json"
@@ -19,7 +20,8 @@ test_ids = [item["node_id"] for item in data["items"]]
 print(f"Running {len(test_ids)} tests in chunk {chunk_id}")
 
 # Run pytest with the specific tests
-subprocess.run(
-    ["pytest"] + test_ids,
-    check=True
+result = subprocess.run(
+    ["pytest", "-v"] + test_ids
 )
+
+sys.exit(result.returncode)
