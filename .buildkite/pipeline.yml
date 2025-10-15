@@ -1,3 +1,4 @@
 steps:
   - command: uv run discover.py --number-of-jobs=4
     image: astral/uv:python3.14-bookworm
+    artifact_paths: "tests-chunk*"
